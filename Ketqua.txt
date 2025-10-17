@@ -1,0 +1,24 @@
+ Sinh ảnh nghệ thuật theo phong cách (Neural Style Transfer)
+Mô tả chi tiết yêu cầu chức năng:
+Tạo ra một ứng dụng cho phép người dùng tải lên hai hình ảnh:
+Ảnh nội dung (Content Image): Bức ảnh gốc mà người dùng muốn biến đổi.
+Ảnh phong cách (Style Image): Bức ảnh chứa phong cách nghệ thuật (ví dụ: tranh của Van Gogh, Picasso).
+Hệ thống sẽ kết hợp nội dung của ảnh thứ nhất với phong cách của ảnh thứ hai để tạo ra một tác phẩm nghệ thuật mới.
+Dataset:
+Không cần bộ dữ liệu gán nhãn cụ thể. Bạn chỉ cần:
+Ảnh nội dung: Bất kỳ ảnh nào.
+Ảnh phong cách: Một bộ sưu tập các bức tranh nổi tiếng hoặc các họa tiết nghệ thuật.
+Một mô hình CNN đã được huấn luyện trước trên ImageNet (VGG19 là lựa chọn phổ biến nhất cho bài toán này).
+Mô hình AI có thể vận dụng:
+Mô hình không cần huấn luyện thêm mà chủ yếu dựa vào quá trình tối ưu hóa (Optimization).
+Sử dụng một mô hình CNN (như VGG19) để trích xuất các đặc trưng:
+Content Features: Lấy từ các lớp nông hơn (shallow layers) của mạng.
+Style Features: Lấy từ các lớp sâu hơn (deeper layers) và được biểu diễn bằng ma trận Gram.
+Định nghĩa một hàm mất mát (loss function) tổng hợp bao gồm Content Loss và Style Loss, sau đó tối ưu hóa một ảnh nhiễu trắng ban đầu để giảm thiểu hàm mất mát này.
+Những vấn đề cần lưu ý:
+Tốc độ xử lý: Quá trình tối ưu hóa cho từng cặp ảnh có thể mất nhiều thời gian. Các phương pháp "Fast Neural Style Transfer" huấn luyện một mạng nơ-ron riêng cho từng phong cách để tăng tốc độ.
+Cân bằng giữa Content và Style: Việc điều chỉnh trọng số giữa Content Loss và Style Loss sẽ ảnh hưởng lớn đến kết quả cuối cùng.
+Chất lượng ảnh đầu ra: Kích thước và độ phân giải của ảnh có thể ảnh hưởng đến chi tiết nghệ thuật.
+Link code mẫu tham khảo:
+TensorFlow Tutorial: https://www.tensorflow.org/tutorials/generative/style_transfer
+PyTorch Tutorial: https://pytorch.org/tutorials/advanced/neural_style_tutorial.html
